@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>Navid Khan — Open Source Proof</title>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --surface: #f6f8fa;
+        --text: #1f2328;
+        --muted: #59636e;
+        --faint: #818c98;
+        --border: #d1d9e0;
+        --border-light: #e6eaef;
+        --link: #0969da;
+        --link-hover: #0550ae;
+        --badge-bg: #ddf4ff;
+        --badge-text: #0969da;
+        --merged-bg: #dafbe1;
+        --merged-text: #116329;
+        --open-bg: #fff8c5;
+        --open-text: #7d4e00;
+        color-scheme: light;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d1117;
+          --surface: #161b22;
+          --text: #e6edf3;
+          --muted: #9198a1;
+          --faint: #6e7681;
+          --border: #3d444d;
+          --border-light: #21262d;
+          --link: #4493f8;
+          --link-hover: #79b8ff;
+          --badge-bg: #122a4a;
+          --badge-text: #4493f8;
+          --merged-bg: #12261e;
+          --merged-text: #3fb950;
+          --open-bg: #2e2305;
+          --open-text: #d29922;
+          color-scheme: dark;
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.55;
+      }
+      a {
+        color: var(--link);
+        text-decoration: none;
+      }
+      a:hover { color: var(--link-hover); text-decoration: underline; }
+      a:focus-visible {
+        outline: 2px solid var(--link);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .page {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 48px 24px 40px;
+      }
+      @media (max-width: 560px) {
+        .page { padding: 32px 18px 32px; }
+      }
+
+      /* Header */
+      header {
+        padding-bottom: 28px;
+        border-bottom: 1px solid var(--border);
+      }
+      h1 {
+        margin: 0;
+        font-size: 2.25rem;
+        line-height: 1.15;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+      @media (max-width: 560px) { h1 { font-size: 1.875rem; } }
+      .handle {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 1rem;
+        color: var(--muted);
+      }
+      .handle svg { flex: none; fill: var(--muted); }
+      .handle a { font-weight: 600; }
+
+      /* Sections */
+      section { padding: 32px 0 4px; }
+      section + section { border-top: 1px solid var(--border-light); margin-top: 28px; }
+      h2 {
+        margin: 0 0 6px;
+        font-size: 1.375rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        line-height: 1.3;
+      }
+      .section-lede {
+        margin: 0 0 20px;
+        color: var(--muted);
+        max-width: 68ch;
+      }
+      .section-lede a { font-weight: 600; }
+
+      /* Lead project */
+      .project {
+        background: var(--surface);
+        border: 1px solid var(--border-light);
+        border-radius: 8px;
+        padding: 20px 22px;
+      }
+      @media (max-width: 560px) { .project { padding: 16px 16px; } }
+      .project-name {
+        font-size: 1.0625rem;
+        font-weight: 700;
+        margin: 0;
+      }
+      .project-desc {
+        margin: 8px 0 0;
+        color: var(--muted);
+      }
+      .releases {
+        list-style: none;
+        margin: 20px 0 0;
+        padding: 16px 0 0;
+        border-top: 1px solid var(--border-light);
+        display: grid;
+        gap: 14px;
+      }
+      .release {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+      .release-main { flex: 1 1 260px; min-width: 0; }
+      .release-version { font-weight: 700; font-size: 1rem; }
+      .release-title { color: var(--text); }
+      .release-meta {
+        color: var(--faint);
+        font-size: 0.875rem;
+        white-space: nowrap;
+        padding-top: 2px;
+      }
+      .tag-current {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        line-height: 1;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: var(--badge-bg);
+        color: var(--badge-text);
+        vertical-align: 2px;
+        margin-left: 6px;
+        letter-spacing: 0.01em;
+      }
+
+      /* Merged list */
+      .merged-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 0;
+        border: 1px solid var(--border-light);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .merged-item {
+        padding: 16px 20px;
+        background: var(--bg);
+      }
+      .merged-item + .merged-item { border-top: 1px solid var(--border-light); }
+      @media (max-width: 560px) { .merged-item { padding: 14px 16px; } }
+      .pr-line {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .pr-ref { font-weight: 700; white-space: nowrap; }
+      .pr-title { font-weight: 600; }
+      .status {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        line-height: 1;
+        padding: 4px 8px;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+      .status-merged { background: var(--merged-bg); color: var(--merged-text); }
+      .status-open { background: var(--open-bg); color: var(--open-text); }
+      .pr-meta {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 0.9375rem;
+      }
+
+      /* Open PR table */
+      .table-wrap {
+        border: 1px solid var(--border-light);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9375rem;
+      }
+      thead th {
+        text-align: left;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--muted);
+        background: var(--surface);
+        padding: 10px 16px;
+        border-bottom: 1px solid var(--border-light);
+      }
+      tbody td {
+        padding: 12px 16px;
+        vertical-align: top;
+        border-top: 1px solid var(--border-light);
+      }
+      tbody tr:first-child td { border-top: none; }
+      td.repo {
+        font-weight: 600;
+        white-space: nowrap;
+        color: var(--text);
+      }
+      td.pr a { font-weight: 600; white-space: nowrap; }
+      td.note { color: var(--muted); }
+
+      @media (max-width: 680px) {
+        thead { display: none; }
+        table, tbody, tr, td { display: block; width: 100%; }
+        tbody tr { padding: 12px 16px; }
+        tbody tr + tr { border-top: 1px solid var(--border-light); }
+        tbody td { padding: 0; border-top: none; }
+        td.repo { white-space: normal; }
+        td.pr { margin-top: 2px; }
+        td.note { margin-top: 4px; }
+      }
+
+      footer {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        color: var(--muted);
+        font-size: 0.875rem;
+      }
+      footer p { margin: 0; }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <h1>Navid Khan</h1>
+        <div class="handle">
+          <svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg>
+          <span>GitHub:</span>
+          <a href="https://github.com/Sun-Wukhan">Sun-Wukhan</a>
+        </div>
+      </header>
+
+      <main>
+        <!-- Section 1 -->
+        <section aria-labelledby="terraformer-heading">
+          <h2 id="terraformer-heading">Terraformer revival</h2>
+          <p class="section-lede">Navid Khan maintains a revival fork of GoogleCloudPlatform/terraformer — the archived upstream &ldquo;reverse Terraform&rdquo; CLI that generates Terraform files from existing infrastructure.</p>
+
+          <div class="project">
+            <p class="project-name"><a href="https://github.com/Sun-Wukhan/terraformer">Sun-Wukhan/terraformer</a></p>
+            <p class="project-desc">Revival fork of GoogleCloudPlatform/terraformer.</p>
+
+            <ul class="releases">
+              <li class="release">
+                <div class="release-main">
+                  <a class="release-version" href="https://github.com/Sun-Wukhan/terraformer/releases/tag/v0.10.0">v0.10.0</a><span class="tag-current">Current release</span>
+                  <span class="release-title"> — &ldquo;AI-era coverage&rdquo;</span>
+                </div>
+                <div class="release-meta">Published October 26, 2026</div>
+              </li>
+              <li class="release">
+                <div class="release-main">
+                  <a class="release-version" href="https://github.com/Sun-Wukhan/terraformer/releases/tag/v0.9.0">v0.9.0</a>
+                  <span class="release-title"> — &ldquo;Terraformer lives again&rdquo;</span>
+                </div>
+                <div class="release-meta">Published October 20, 2026</div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section aria-labelledby="merged-heading">
+          <h2 id="merged-heading">Merged upstream</h2>
+          <p class="section-lede">Pull requests merged into kubernetes-sigs/external-dns.</p>
+
+          <ul class="merged-list">
+            <li class="merged-item">
+              <div class="pr-line">
+                <a class="pr-ref" href="https://github.com/kubernetes-sigs/external-dns/pull/6791">#6791</a>
+                <span class="pr-title">fix: register metav1 types for apis/v1alpha1 scheme</span>
+                <span class="status status-merged">Merged</span>
+              </div>
+              <p class="pr-meta">Merged October 24, 2026. Formally approved by maintainer mloiseleur before merge.</p>
+            </li>
+            <li class="merged-item">
+              <div class="pr-line">
+                <a class="pr-ref" href="https://github.com/kubernetes-sigs/external-dns/pull/6790">#6790</a>
+                <span class="pr-title">docs: enable version warning banner for outdated documentation versions</span>
+                <span class="status status-merged">Merged</span>
+              </div>
+              <p class="pr-meta">Merged October 22, 2026.</p>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Section 3 -->
+        <section aria-labelledby="open-heading">
+          <h2 id="open-heading">Open pull requests under review</h2>
+          <p class="section-lede">Open pull requests, verified open on October 27, 2026.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Repository</th>
+                  <th scope="col">Pull request</th>
+                  <th scope="col">Status / engagement</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="repo">grafana/loki</td>
+                  <td class="pr"><a href="https://github.com/grafana/loki/pull/25803">#25803</a></td>
+                  <td class="note">Fixes the JSON push API rejecting boolean label values (issue #10738).</td>
+                </tr>
+                <tr>
+                  <td class="repo">kubevirt/kubevirt</td>
+                  <td class="pr"><a href="https://github.com/kubevirt/kubevirt/pull/19570">#19570</a></td>
+                  <td class="note">Approved through KubeVirt&rsquo;s Prow review process; awaiting merge.</td>
+                </tr>
+                <tr>
+                  <td class="repo">external-secrets/external-secrets</td>
+                  <td class="pr"><a href="https://github.com/external-secrets/external-secrets/pull/7157">#7157</a></td>
+                  <td class="note">Documentation clarifying PushSecret resource policy permissions.</td>
+                </tr>
+                <tr>
+                  <td class="repo">prometheus/blackbox_exporter</td>
+                  <td class="pr"><a href="https://github.com/prometheus/blackbox_exporter/pull/1691">#1691</a></td>
+                  <td class="note">Community reviewer acdha contributed a real-world case; a test pinning that case has been added.</td>
+                </tr>
+                <tr>
+                  <td class="repo">emissary-ingress/emissary</td>
+                  <td class="pr"><a href="https://github.com/emissary-ingress/emissary/pull/6015">#6015</a></td>
+                  <td class="note">Maintainer kflynn has commented on the approach.</td>
+                </tr>
+                <tr>
+                  <td class="repo">zitadel/zitadel</td>
+                  <td class="pr"><a href="https://github.com/zitadel/zitadel/pull/12954">#12954</a></td>
+                  <td class="note">Under review.</td>
+                </tr>
+                <tr>
+                  <td class="repo">terraform-docs/terraform-docs</td>
+                  <td class="pr"><a href="https://github.com/terraform-docs/terraform-docs/pull/964">#964</a></td>
+                  <td class="note">Under review.</td>
+                </tr>
+                <tr>
+                  <td class="repo">grafana/grafana</td>
+                  <td class="pr"><a href="https://github.com/grafana/grafana/pull/134683">#134683</a></td>
+                  <td class="note">Under review.</td>
+                </tr>
+                <tr>
+                  <td class="repo">grafana/grafana</td>
+                  <td class="pr"><a href="https://github.com/grafana/grafana/pull/134773">#134773</a></td>
+                  <td class="note">Under review.</td>
+                </tr>
+                <tr>
+                  <td class="repo">hashicorp/vault</td>
+                  <td class="pr"><a href="https://github.com/hashicorp/vault/pull/32150">#32150</a></td>
+                  <td class="note">Under review.</td>
+                </tr>
+                <tr>
+                  <td class="repo">projectcontour/contour</td>
+                  <td class="pr"><a href="https://github.com/projectcontour/contour/pull/7767">#7767</a></td>
+                  <td class="note">Under review.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>All facts verified from github.com on October 27, 2026. Source: <a href="https://github.com/Sun-Wukhan">github.com/Sun-Wukhan</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>
