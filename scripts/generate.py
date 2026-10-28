@@ -22,9 +22,10 @@ import re
 import sys
 import urllib.parse
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime
 from pathlib import Path
 from string import Template
+from zoneinfo import ZoneInfo
 
 USER = "Sun-Wukhan"
 API = "https://api.github.com"
@@ -238,12 +239,12 @@ def main():
         r for r in api_get(f"/repos/{USER}/terraformer/releases?per_page=5") if not r["draft"]
     ][:2]
 
-    aws = f"{site['aws_covered']} of {site['aws_total']} AWS resource types"
-    gcp = f"{site['gcp_covered']} GCP resource types"
+    aws = f"{site['aws_covered']:,} of {site['aws_total']:,} AWS resource types"
+    gcp = f"{site['gcp_covered']:,} GCP resource types"
     if site.get("gcp_total"):
-        gcp = f"{site['gcp_covered']} of {site['gcp_total']} GCP resource types"
+        gcp = f"{site['gcp_covered']:,} of {site['gcp_total']:,} GCP resource types"
 
-    today = datetime.now(timezone.utc)
+    today = datetime.now(ZoneInfo("America/Toronto"))
     page = PAGE.substitute(
         css=css,
         aws_line=f"{aws} and {gcp}",
