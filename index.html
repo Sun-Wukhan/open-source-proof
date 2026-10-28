@@ -280,27 +280,26 @@
       </header>
 
       <main>
-        <!-- Section 1 -->
         <section aria-labelledby="terraformer-heading">
           <h2 id="terraformer-heading">Terraformer revival</h2>
           <p class="section-lede">Navid Khan maintains a revival fork of GoogleCloudPlatform/terraformer — the archived upstream &ldquo;reverse Terraform&rdquo; CLI that generates Terraform files from existing infrastructure.</p>
 
           <div class="project">
             <p class="project-name"><a href="https://github.com/Sun-Wukhan/terraformer">Sun-Wukhan/terraformer</a></p>
-            <p class="project-desc">Revival fork of GoogleCloudPlatform/terraformer. Coverage work is ongoing: 458 of 1,736 AWS resource types and 297 GCP resource types are now supported, including the AI-era services (Bedrock, SageMaker, Vertex AI).</p>
+            <p class="project-desc">Revival fork of GoogleCloudPlatform/terraformer. Coverage work is ongoing: 458 of 1736 AWS resource types and 389 GCP resource types are now supported, including the AI-era services (Bedrock, SageMaker, Vertex AI).</p>
 
             <ul class="releases">
               <li class="release">
                 <div class="release-main">
                   <a class="release-version" href="https://github.com/Sun-Wukhan/terraformer/releases/tag/v0.10.0">v0.10.0</a><span class="tag-current">Current release</span>
-                  <span class="release-title"> — &ldquo;AI-era coverage&rdquo;</span>
+                  <span class="release-title"> &mdash; &ldquo;AI-era coverage&rdquo;</span>
                 </div>
                 <div class="release-meta">Published October 26, 2026</div>
               </li>
               <li class="release">
                 <div class="release-main">
                   <a class="release-version" href="https://github.com/Sun-Wukhan/terraformer/releases/tag/v0.9.0">v0.9.0</a>
-                  <span class="release-title"> — &ldquo;Terraformer lives again&rdquo;</span>
+                  <span class="release-title"> &mdash; &ldquo;Terraformer lives again&rdquo;</span>
                 </div>
                 <div class="release-meta">Published October 20, 2026</div>
               </li>
@@ -308,15 +307,14 @@
           </div>
         </section>
 
-        <!-- Section 2 -->
         <section aria-labelledby="merged-heading">
           <h2 id="merged-heading">Merged upstream</h2>
-          <p class="section-lede">Pull requests merged into kubernetes-sigs/external-dns.</p>
+          <p class="section-lede">Pull requests merged into third-party projects.</p>
 
           <ul class="merged-list">
             <li class="merged-item">
               <div class="pr-line">
-                <a class="pr-ref" href="https://github.com/kubernetes-sigs/external-dns/pull/6791">#6791</a>
+                <a class="pr-ref" href="https://github.com/kubernetes-sigs/external-dns/pull/6791">kubernetes-sigs/external-dns#6791</a>
                 <span class="pr-title">fix: register metav1 types for apis/v1alpha1 scheme</span>
                 <span class="status status-merged">Merged</span>
               </div>
@@ -324,7 +322,7 @@
             </li>
             <li class="merged-item">
               <div class="pr-line">
-                <a class="pr-ref" href="https://github.com/kubernetes-sigs/external-dns/pull/6790">#6790</a>
+                <a class="pr-ref" href="https://github.com/kubernetes-sigs/external-dns/pull/6790">kubernetes-sigs/external-dns#6790</a>
                 <span class="pr-title">docs: enable version warning banner for outdated documentation versions</span>
                 <span class="status status-merged">Merged</span>
               </div>
@@ -333,10 +331,9 @@
           </ul>
         </section>
 
-        <!-- Section 3 -->
         <section aria-labelledby="open-heading">
           <h2 id="open-heading">Open pull requests under review</h2>
-          <p class="section-lede">Open pull requests, verified open on October 27, 2026.</p>
+          <p class="section-lede">Open pull requests, verified open on October 28, 2026.</p>
 
           <div class="table-wrap">
             <table>
@@ -349,9 +346,14 @@
               </thead>
               <tbody>
                 <tr>
+                  <td class="repo">grafana/grafana-influxdb-datasource</td>
+                  <td class="pr"><a href="https://github.com/grafana/grafana-influxdb-datasource/pull/141">#141</a></td>
+                  <td class="note">Fixes Ctrl+/ inserting SQL comment markers in the Flux query editor (grafana/grafana issue #87021).</td>
+                </tr>
+                <tr>
                   <td class="repo">cortexproject/cortex</td>
                   <td class="pr"><a href="https://github.com/cortexproject/cortex/pull/7898">#7898</a></td>
-                  <td class="note">Adds a <i>type</i> label to cortex_discarded_samples_total to distinguish float and native histogram samples (issue #6221). Opened October 27, 2026.</td>
+                  <td class="note">Adds a type label to cortex_discarded_samples_total to distinguish float and native histogram samples (issue #6221).</td>
                 </tr>
                 <tr>
                   <td class="repo">grafana/loki</td>
@@ -359,29 +361,9 @@
                   <td class="note">Fixes the JSON push API rejecting boolean label values (issue #10738).</td>
                 </tr>
                 <tr>
-                  <td class="repo">grafana/grafana-influxdb-datasource</td>
-                  <td class="pr"><a href="https://github.com/grafana/grafana-influxdb-datasource/pull/141">#141</a></td>
-                  <td class="note">Fixes Ctrl+/ inserting SQL comment markers in the Flux query editor (grafana/grafana issue #87021). Opened October 27, 2026.</td>
-                </tr>
-                <tr>
-                  <td class="repo">opensearch-project/OpenSearch</td>
-                  <td class="pr"><a href="https://github.com/opensearch-project/OpenSearch/pull/23392">#23392</a></td>
-                  <td class="note">Fixes Lucene JUL log lines appearing as WARN on stderr at startup.</td>
-                </tr>
-                <tr>
-                  <td class="repo">prometheus-operator/prometheus-operator</td>
-                  <td class="pr"><a href="https://github.com/prometheus-operator/prometheus-operator/pull/8877">#8877</a></td>
-                  <td class="note">Fixes empty <i>regex</i> values in relabel configs being dropped from the generated config.</td>
-                </tr>
-                <tr>
-                  <td class="repo">jetstack/version-checker</td>
-                  <td class="pr"><a href="https://github.com/jetstack/version-checker/pull/463">#463</a></td>
-                  <td class="note">Adds unit tests for the fallback client.</td>
-                </tr>
-                <tr>
                   <td class="repo">kubevirt/kubevirt</td>
                   <td class="pr"><a href="https://github.com/kubevirt/kubevirt/pull/19570">#19570</a></td>
-                  <td class="note">Approved through KubeVirt&rsquo;s Prow review process; awaiting merge.</td>
+                  <td class="note">Approved through KubeVirt&#x27;s Prow review process; awaiting merge.</td>
                 </tr>
                 <tr>
                   <td class="repo">external-secrets/external-secrets</td>
@@ -389,9 +371,14 @@
                   <td class="note">Documentation clarifying PushSecret resource policy permissions.</td>
                 </tr>
                 <tr>
-                  <td class="repo">prometheus/blackbox_exporter</td>
-                  <td class="pr"><a href="https://github.com/prometheus/blackbox_exporter/pull/1691">#1691</a></td>
-                  <td class="note">Community reviewer acdha contributed a real-world case; a test pinning that case has been added.</td>
+                  <td class="repo">opensearch-project/OpenSearch</td>
+                  <td class="pr"><a href="https://github.com/opensearch-project/OpenSearch/pull/23392">#23392</a></td>
+                  <td class="note">Fixes Lucene JUL log lines appearing as WARN on stderr at startup.</td>
+                </tr>
+                <tr>
+                  <td class="repo">zitadel/zitadel</td>
+                  <td class="pr"><a href="https://github.com/zitadel/zitadel/pull/12954">#12954</a></td>
+                  <td class="note">Fixes issue #3919 in zitadel/zitadel.</td>
                 </tr>
                 <tr>
                   <td class="repo">emissary-ingress/emissary</td>
@@ -399,34 +386,9 @@
                   <td class="note">Maintainer kflynn has commented on the approach.</td>
                 </tr>
                 <tr>
-                  <td class="repo">zitadel/zitadel</td>
-                  <td class="pr"><a href="https://github.com/zitadel/zitadel/pull/12954">#12954</a></td>
-                  <td class="note">Under review.</td>
-                </tr>
-                <tr>
-                  <td class="repo">terraform-docs/terraform-docs</td>
-                  <td class="pr"><a href="https://github.com/terraform-docs/terraform-docs/pull/964">#964</a></td>
-                  <td class="note">Fixes ref-version parsing for git module sources with extra query parameters.</td>
-                </tr>
-                <tr>
-                  <td class="repo">terraform-docs/terraform-docs</td>
-                  <td class="pr"><a href="https://github.com/terraform-docs/terraform-docs/pull/963">#963</a></td>
-                  <td class="note">Adds hash-comment support in headers and footers.</td>
-                </tr>
-                <tr>
-                  <td class="repo">grafana/grafana</td>
-                  <td class="pr"><a href="https://github.com/grafana/grafana/pull/134683">#134683</a></td>
-                  <td class="note">Under review.</td>
-                </tr>
-                <tr>
                   <td class="repo">grafana/grafana</td>
                   <td class="pr"><a href="https://github.com/grafana/grafana/pull/134773">#134773</a></td>
-                  <td class="note">Under review.</td>
-                </tr>
-                <tr>
-                  <td class="repo">hashicorp/vault</td>
-                  <td class="pr"><a href="https://github.com/hashicorp/vault/pull/32150">#32150</a></td>
-                  <td class="note">Under review.</td>
+                  <td class="note">Fixes issue #84250 in grafana/grafana.</td>
                 </tr>
                 <tr>
                   <td class="repo">projectcontour/contour</td>
@@ -438,6 +400,41 @@
                   <td class="pr"><a href="https://github.com/projectcontour/contour/pull/7764">#7764</a></td>
                   <td class="note">Removes a redundant Status Description printer column.</td>
                 </tr>
+                <tr>
+                  <td class="repo">jetstack/version-checker</td>
+                  <td class="pr"><a href="https://github.com/jetstack/version-checker/pull/463">#463</a></td>
+                  <td class="note">Adds unit tests for the fallback client.</td>
+                </tr>
+                <tr>
+                  <td class="repo">prometheus-operator/prometheus-operator</td>
+                  <td class="pr"><a href="https://github.com/prometheus-operator/prometheus-operator/pull/8877">#8877</a></td>
+                  <td class="note">Fixes empty regex values in relabel configs being dropped from the generated config.</td>
+                </tr>
+                <tr>
+                  <td class="repo">hashicorp/vault</td>
+                  <td class="pr"><a href="https://github.com/hashicorp/vault/pull/32150">#32150</a></td>
+                  <td class="note">Fixes issue #18579 in hashicorp/vault.</td>
+                </tr>
+                <tr>
+                  <td class="repo">grafana/grafana</td>
+                  <td class="pr"><a href="https://github.com/grafana/grafana/pull/134683">#134683</a></td>
+                  <td class="note">Fixes issue #56387 in grafana/grafana.</td>
+                </tr>
+                <tr>
+                  <td class="repo">terraform-docs/terraform-docs</td>
+                  <td class="pr"><a href="https://github.com/terraform-docs/terraform-docs/pull/964">#964</a></td>
+                  <td class="note">Fixes ref-version parsing for git module sources with extra query parameters.</td>
+                </tr>
+                <tr>
+                  <td class="repo">prometheus/blackbox_exporter</td>
+                  <td class="pr"><a href="https://github.com/prometheus/blackbox_exporter/pull/1691">#1691</a></td>
+                  <td class="note">Community reviewer acdha contributed a real-world case; a test pinning that case has been added.</td>
+                </tr>
+                <tr>
+                  <td class="repo">terraform-docs/terraform-docs</td>
+                  <td class="pr"><a href="https://github.com/terraform-docs/terraform-docs/pull/963">#963</a></td>
+                  <td class="note">Adds hash-comment support in headers and footers.</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -445,7 +442,7 @@
       </main>
 
       <footer>
-        <p>All facts verified from github.com on October 27, 2026. Source: <a href="https://github.com/Sun-Wukhan">github.com/Sun-Wukhan</a>.</p>
+        <p>All facts verified from github.com on October 28, 2026. Source: <a href="https://github.com/Sun-Wukhan">github.com/Sun-Wukhan</a>. This page is regenerated automatically from live GitHub data.</p>
       </footer>
     </div>
   </body>
